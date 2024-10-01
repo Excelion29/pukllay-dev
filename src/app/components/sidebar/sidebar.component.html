@@ -1,0 +1,41 @@
+<div class="logo">
+    <a href="https://www.creative-tim.com" class="simple-text logo-mini">
+        <div class="logo-img">
+            <!-- Imagen del logo -->
+        </div>
+    </a>
+    <a href="https://www.creative-tim.com" class="simple-text logo-normal">
+        PUKLLAY
+    </a>
+</div>
+
+<div class="sidebar-wrapper">
+    <ul class="nav">
+        <li *ngFor="let menuItem of menuItems" class="nav-item {{menuItem.class}}" routerLinkActive="active">
+            <ng-container *ngIf="menuItem.children && menuItem.children.length; else singleItem">
+                <a class="navbar-toggler dropdown-toggle d-flex justify-content-between align-items-center" href="javascript:void(0)" (click)="toggleMenu(menuItem)" [attr.aria-expanded]="menuItem.expanded ? 'true' : 'false'">
+                    <div class="d-flex align-items-center">
+                        <i class="now-ui-icons {{menuItem.icon}}"></i>
+                        <p class="mb-0">{{menuItem.title}}</p>
+                    </div>
+                </a>
+
+                <ul [id]="'submenu-' + menuItem.title" class="mt-2 collapse" [ngClass]="{'show': menuItem.expanded}">
+                    <li *ngFor="let child of menuItem.children" class="nav-item" routerLinkActive="active" >
+                        <a [routerLink]="[child.path]" class="nav-link">
+                            <i class="now-ui-icons {{child.icon}}"></i>
+                            <p>{{child.title}}</p>
+                        </a>
+                    </li>
+                </ul>
+            </ng-container>
+
+            <ng-template #singleItem >
+                <a [routerLink]="[menuItem.path]" class="nav-link">
+                    <i class="now-ui-icons {{menuItem.icon}}"></i>
+                    <p>{{menuItem.title}}</p>
+                </a>
+            </ng-template>
+        </li>
+    </ul>
+</div>
