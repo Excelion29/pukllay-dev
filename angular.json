@@ -22,14 +22,15 @@
               "src/favicon.ico"
             ],
             "styles": [
+              "node_modules/primeng/resources/themes/saga-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeicons/primeicons.css",
+
               "node_modules/perfect-scrollbar/css/perfect-scrollbar.css",
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/ngx-toastr/toastr.css",
               "src/assets/scss/now-ui-dashboard.scss",
-              "src/assets/demo/demo.css",
-              "node_modules/primeng/resources/themes/saga-blue/theme.css",
-              "node_modules/primeng/resources/primeng.min.css",
-              "node_modules/primeicons/primeicons.css"
+              "src/assets/demo/demo.css"
             ],
             "scripts": [
               "node_modules/chart.js/dist/chart.js"
@@ -93,6 +94,10 @@
               "node_modules/chart.js/dist/chart.js"
             ],
             "styles": [
+              "node_modules/primeng/resources/themes/saga-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeicons/primeicons.css",
+
               "node_modules/perfect-scrollbar/css/perfect-scrollbar.css",
               "node_modules/ngx-toastr/toastr.css",
               "src/assets/scss/now-ui-dashboard.scss",
