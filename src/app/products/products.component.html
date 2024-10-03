@@ -10,7 +10,8 @@
           <p-table [value]="products" [paginator]="true" [rows]="5" [totalRecords]="totalRecords" [lazy]="true" (onLazyLoad)="loadProducts($event)">
             <ng-template pTemplate="header">
               <tr>
-                <th>Name</th>
+                <th>#</th>
+                <th>Nombre</th>
                 <th>Image</th>
                 <th>Price</th>
                 <th>Category</th>
@@ -20,15 +21,16 @@
             </ng-template>
             <ng-template pTemplate="body" let-product>
               <tr>
-                <td>{{product.name}}</td>
-                <td><img [src]="product.src" [alt]="product.name" width="100" class="shadow-4" /></td>
-                <td>{{product.price | currency: product.currency}}</td>
-                <td>{{product.category}}</td>
+                <td>{{product.productCode}}</td>
+                <td>{{product.productName}}</td>
+                <td><img [src]="product.productImage" [alt]="product.productName" width="100" class="shadow-4" /></td>
+                <td>{{product.productPrice | currency: product.productCurrency}}</td>
+                <td>{{product.productCategory}}</td>
                 <td>
-                  <p-rating [(ngModel)]="product.rating" [readonly]="true" [cancel]="false"></p-rating>
+                  <p-rating [(ngModel)]="product.productRating" [readonly]="true" [cancel]="false"></p-rating>
                 </td>
                 <td>
-                  <p-tag [value]="product.inventoryStatus" [severity]="getSeverity(product.inventoryStatus)"></p-tag>
+                  <p-tag [value]="product.productInventoryStatus" [severity]="getSeverity(product.productInventoryStatus)"></p-tag>
                 </td>
               </tr>
             </ng-template>

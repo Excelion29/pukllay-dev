@@ -14,8 +14,10 @@ import { ChartsModule } from 'ng2-charts';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
-import { ProductsComponent } from '../../products/products.component';
 import { SharedModule } from '../../shared/shared.module';
+
+import { ProductsComponent } from '../../products/products.component';
+import { CategoriesComponent } from '../../categories/categories.component';
 
 @NgModule({
   imports: [
@@ -29,7 +31,12 @@ import { SharedModule } from '../../shared/shared.module';
   ],
   declarations: [
     DashboardComponent,
+
+    //Tienda----------------------------
     ProductsComponent,
+    CategoriesComponent,
+    //----------------------------------
+
     UserProfileComponent,
     TableListComponent,
     UpgradeComponent,
