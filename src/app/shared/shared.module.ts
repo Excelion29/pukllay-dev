@@ -88,6 +88,7 @@ import { BlockUIModule } from 'primeng/blockui';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { RippleModule } from 'primeng/ripple';
 import { StyleClassModule } from 'primeng/styleclass';
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [],
@@ -180,7 +181,8 @@ import { StyleClassModule } from 'primeng/styleclass';
     OrderListModule,
     OrganizationChartModule,
     OverlayPanelModule,
-    PaginatorModule
+    PaginatorModule,
+    NgbDropdownModule
   ],
   exports: [
     TableModule,
@@ -270,7 +272,8 @@ import { StyleClassModule } from 'primeng/styleclass';
     OrderListModule,
     OrganizationChartModule,
     OverlayPanelModule,
-    PaginatorModule
+    PaginatorModule,
+    NgbDropdownModule
   ]
 })
 export class SharedModule { }

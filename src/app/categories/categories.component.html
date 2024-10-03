@@ -28,7 +28,12 @@
                         <td class="text-center" >
                           <p-tag [value]="getText(category.CategoryStatus)" [severity]="getSeverity(category.CategoryStatus)"></p-tag>
                         </td>
-                        <td></td>
+                        <td>
+                          <div class="d-flex justify-content-center flex-wrap gap-3">
+                              <p-button icon="pi pi-pencil" severity="warning" [rounded]="true"/>
+                              <p-button icon="pi pi-times" severity="danger" [rounded]="true"/>
+                          </div>
+                        </td>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="summary">
