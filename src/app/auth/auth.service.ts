@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   
-  private loggedIn = false; // Estado del inicio de sesión
   
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   login(credentials: { email: string; password: string }): Observable<any> {
     return this.http.get<any>('http://127.0.0.1:5501/app/models/users.json').pipe(
@@ -18,7 +18,6 @@ export class AuthService {
         const user = response.data.find((user: any) => user.email === credentials.email);
   
         if (user && user.password === credentials.password) {
-          this.loggedIn = true;
           localStorage.setItem('access_token', user.token); // Guarda el token en localStorage
           localStorage.setItem('user', JSON.stringify(user));
           return { success: true, message: 'Inicio de sesión exitoso', user };
@@ -40,9 +39,9 @@ export class AuthService {
   }
 
   logout() {
-    this.loggedIn = false;
-    localStorage.removeItem('access_token'); 
-    localStorage.removeItem('user');
+    localStorage.removeItem('access_token'); // Borra el token o lo que manejes como autenticación
+    localStorage.removeItem('user'); // Borra el token o lo que manejes como autenticación
+    this.router.navigate(['/login']); // Redirige al login después de cerrar sesión
   }
 
   getUser(): any {

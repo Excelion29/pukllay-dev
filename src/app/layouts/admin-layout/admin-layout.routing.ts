@@ -10,7 +10,7 @@ import { RefundsComponent } from '../../transactions/refunds/refunds.component';
 import { AuthGuard } from '../../auth/auth.guard';
 
 export const AdminLayoutRoutes: Routes = [
-    { path: 'dashboard', component: DashboardComponent},
+    { path: 'dashboard', component: DashboardComponent , canActivate: [AuthGuard] },
 
     //!Tienda---------------------------------------------------
     { path: 'products', component: ProductsComponent , canActivate: [AuthGuard] },
