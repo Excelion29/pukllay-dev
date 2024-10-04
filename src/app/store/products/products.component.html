@@ -4,33 +4,39 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title">Simple Table</h4>
+          <h4 class="card-title">Tabla de Productos</h4>
         </div>
         <div class="card-body">
           <p-table [value]="products" [paginator]="true" [rows]="5" [totalRecords]="totalRecords" [lazy]="true" (onLazyLoad)="loadProducts($event)">
             <ng-template pTemplate="header">
               <tr>
-                <th>#</th>
+                <th class="text-center">#</th>
                 <th>Nombre</th>
-                <th>Image</th>
-                <th>Price</th>
-                <th>Category</th>
-                <th>Reviews</th>
-                <th>Status</th>
+                <th>Precio</th>
+                <th>Categoría</th>
+                <th>Estado</th>
+                <th>Acciones</th>
               </tr>
             </ng-template>
             <ng-template pTemplate="body" let-product>
               <tr>
-                <td>{{product.productCode}}</td>
-                <td>{{product.productName}}</td>
-                <td><img [src]="product.productImage" [alt]="product.productName" width="100" class="shadow-4" /></td>
+                <td class="text-center">
+                  <img [src]="product.productImage" [alt]="product.productImage" width="100" class="img-thumbnail shadow-sm d-block mx-auto" />
+                  <div class="text-center mt-2">{{ product.productCode }}</div>
+                </td>
+                <td> 
+                  {{product.productName}}
+                </td>
                 <td>{{product.productPrice | currency: product.productCurrency}}</td>
                 <td>{{product.productCategory}}</td>
                 <td>
-                  <p-rating [(ngModel)]="product.productRating" [readonly]="true" [cancel]="false"></p-rating>
+                  <p-tag [value]="product.productInventoryStatus" [severity]="getSeverity(product.productInventoryStatus)"></p-tag>
                 </td>
                 <td>
-                  <p-tag [value]="product.productInventoryStatus" [severity]="getSeverity(product.productInventoryStatus)"></p-tag>
+                  <div class="d-flex justify-content-center flex-wrap gap-3">
+                      <p-button icon="pi pi-pencil" severity="warning"/>
+                      <p-button icon="pi pi-times" severity="danger"/>
+                  </div>
                 </td>
               </tr>
             </ng-template>

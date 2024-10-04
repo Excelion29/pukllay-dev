@@ -34,7 +34,7 @@ export var PRODUCTS: ProductInfo[] = [
     productQuantity: 8,
     productInventoryStatus: 'INSTOCK',
     productCategory: 'Consola',
-    productImage: 'https://m.media-amazon.com/images/I/91g52hIn7NL._AC_SL1500_.jpg',
+    productImage: 'https://coolboxpe.vtexassets.com/arquivos/ids/211100/image-33f6308c982644b092cf85ce0057ddf4.jpg?v=637873787852970000',
     productRating: 4.8,
     productCurrency: 'PEN'
   },
@@ -46,7 +46,7 @@ export var PRODUCTS: ProductInfo[] = [
     productQuantity: 15,
     productInventoryStatus: 'INSTOCK',
     productCategory: 'Consola',
-    productImage: 'https://m.media-amazon.com/images/I/61G7pyt1VkL._AC_SL1000_.jpg',
+    productImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdIqTeyzf6GGI39oAgBBOfK0Ds1FYhM_93KA&s',
     productRating: 4.7,
     productCurrency: 'PEN'
   },
@@ -58,7 +58,7 @@ export var PRODUCTS: ProductInfo[] = [
     productQuantity: 25,
     productInventoryStatus: 'INSTOCK',
     productCategory: 'Accesorios',
-    productImage: 'https://m.media-amazon.com/images/I/71p7v8VpKhL._AC_SL1500_.jpg',
+    productImage: 'https://www.sercoplus.com/20657-large_default/mouse-logitech-gaming-g502-hero-rgb-usb-910-005469.jpg',
     productRating: 4.9,
     productCurrency: 'PEN'
   },
@@ -70,7 +70,7 @@ export var PRODUCTS: ProductInfo[] = [
     productQuantity: 20,
     productInventoryStatus: 'INSTOCK',
     productCategory: 'Accesorios',
-    productImage: 'https://m.media-amazon.com/images/I/81zH5Gp7w7L._AC_SL1500_.jpg',
+    productImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUBxlkreR6xqomVuyuhF_nXcdbz7iUBywmRQ&s',
     productRating: 4.6,
     productCurrency: 'PEN'
   },
@@ -82,7 +82,7 @@ export var PRODUCTS: ProductInfo[] = [
     productQuantity: 12,
     productInventoryStatus: 'INSTOCK',
     productCategory: 'Accesorios',
-    productImage: 'https://m.media-amazon.com/images/I/71AGsC8S8wL._AC_SL1500_.jpg',
+    productImage: 'https://i5.walmartimages.com/asr/25f5b4fd-9021-462a-82a3-cce8c89173f8.ec6240c7a97f75532e2f00022e1bb532.jpeg',
     productRating: 4.8,
     productCurrency: 'PEN'
   },
@@ -94,7 +94,7 @@ export var PRODUCTS: ProductInfo[] = [
     productQuantity: 50,
     productInventoryStatus: 'INSTOCK',
     productCategory: 'Videojuegos',
-    productImage: 'https://m.media-amazon.com/images/I/81tJ9hHqG9L._AC_SL1500_.jpg',
+    productImage: 'https://i5.walmartimages.com/seo/Call-of-Duty-Modern-Warfare-II-C-O-D-E-Edition-PlayStation-4_afc46290-c29d-4b46-ac5c-78dab8099b5b.67a499126f0fd4c8b049c9a86bce6643.jpeg',
     productRating: 4.5,
     productCurrency: 'PEN'
   },
@@ -106,7 +106,7 @@ export var PRODUCTS: ProductInfo[] = [
     productQuantity: 30,
     productInventoryStatus: 'INSTOCK',
     productCategory: 'Videojuegos',
-    productImage: 'https://m.media-amazon.com/images/I/71I4WInbmML._AC_SL1500_.jpg',
+    productImage: 'https://upload.wikimedia.org/wikipedia/en/c/c6/The_Legend_of_Zelda_Breath_of_the_Wild.jpg',
     productRating: 4.9,
     productCurrency: 'PEN'
   }
