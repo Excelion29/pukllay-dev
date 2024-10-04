@@ -1,30 +1,45 @@
 import { Routes } from '@angular/router';
 
 import { DashboardComponent } from '../../dashboard/dashboard.component';
-import { UserProfileComponent } from '../../user-profile/user-profile.component';
-import { TableListComponent } from '../../table-list/table-list.component';
-import { TypographyComponent } from '../../typography/typography.component';
-import { IconsComponent } from '../../icons/icons.component';
-import { MapsComponent } from '../../maps/maps.component';
-import { NotificationsComponent } from '../../notifications/notifications.component';
-import { UpgradeComponent } from '../../upgrade/upgrade.component';
 
-import { ProductsComponent } from '../../products/products.component';
-import { CategoriesComponent } from '../../categories/categories.component';
+import { ProductsComponent } from '../../store/products/products.component';
+import { CategoriesComponent } from '../../store/categories/categories.component';
+import { BrandsComponent } from '../../store/brands/brands.component';
+import { InternalUsersComponent } from '../../accounts/internal-users/internal-users.component';
+import { CustomersComponent } from '../../accounts/customers/customers.component';
+import { OrdersComponent } from '../../transactions/orders/orders.component';
+import { RefundsComponent } from '../../transactions/refunds/refunds.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
 
-    //Tienda----------------------------
+    //!Tienda---------------------------------------------------
     { path: 'products',       component: ProductsComponent },
     { path: 'categories',     component: CategoriesComponent },
-    //----------------------------------
+    { path: 'brands',     component: BrandsComponent },
+    //!---------------------------------------------------------
+
     
-    { path: 'user-profile',   component: UserProfileComponent },
-    { path: 'table-list',     component: TableListComponent },
-    { path: 'typography',     component: TypographyComponent },
-    { path: 'icons',          component: IconsComponent },
-    { path: 'maps',           component: MapsComponent },
-    { path: 'notifications',  component: NotificationsComponent },
-    { path: 'upgrade',        component: UpgradeComponent }
+    //!Pedidos--------------------------------------------------
+    { path: 'orders',       component: OrdersComponent },
+    { path: 'refunds',     component: RefundsComponent },
+    //!---------------------------------------------------------
+
+
+    //!Reportes-------------------------------------------------
+    // { path: 'orders',       component: OrdersComponent },
+    //!---------------------------------------------------------
+
+    
+    //!Clientes-------------------------------------------------
+    { path: 'customers',       component: CustomersComponent },
+    { path: 'internal-users',       component: InternalUsersComponent },
+    //!---------------------------------------------------------
+    // { path: 'user-profile',   component: UserProfileComponent },
+    // { path: 'table-list',     component: TableListComponent },
+    // { path: 'typography',     component: TypographyComponent },
+    // { path: 'icons',          component: IconsComponent },
+    // { path: 'maps',           component: MapsComponent },
+    // { path: 'notifications',  component: NotificationsComponent },
+    // { path: 'upgrade',        component: UpgradeComponent }
 ];

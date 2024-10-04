@@ -1,0 +1,48 @@
+<div class="panel-header panel-header-sm"></div>
+<div class="main-content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Tabla de Marcas</h4>
+          </div>
+          <div class="card-body">
+            <p-table [value]="brands" [paginator]="true" [rows]="5" [totalRecords]="totalRecords" [lazy]="true" (onLazyLoad)="loadBrands($event)">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th class="text-center">#</th>
+                        <th class="text-center">Título</th>
+                        <th class="text-center">Descripción</th>
+                        <th class="text-center">Estado</th>
+                        <th class="text-center">Acciones</th>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-brand>
+                    <tr>
+                        <td>
+                          <img [src]="brand.brandLogo" [alt]="brand.brandLogo" width="100" class="img-thumbnail shadow-sm" />
+                          <div class="text-center">{{brand.brandCode}}</div>
+                        </td>
+                        <td>{{brand.brandName}}</td>
+                        <td>{{brand.brandDescription}}</td>
+                        <td class="text-center" >
+                          <p-tag [value]="getText(brand.brandStatus)" [severity]="getSeverity(brand.brandStatus)"></p-tag>
+                        </td>
+                        <td>
+                          <div class="d-flex justify-content-center flex-wrap gap-3">
+                              <p-button icon="pi pi-pencil" severity="warning"/>
+                              <p-button icon="pi pi-times" severity="danger"/>
+                          </div>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="flex align-items-center justify-content-between">
+                        In total there are {{categories ? categories.length : 0 }} categories.
+                    </div>
+                </ng-template>
+            </p-table>
+          </div>
+        </div>
+    </div>
+</div>

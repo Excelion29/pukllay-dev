@@ -1,0 +1,49 @@
+<div class="panel-header panel-header-sm"></div>
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Tabla de Órdenes</h4>
+                </div>
+                <div class="card-body">
+                    <p-table [value]="orders" [paginator]="true" [rows]="5" [totalRecords]="totalRecords" [lazy]="true" (onLazyLoad)="loadOrders($event)">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th class="text-center">Orden ID</th>
+                                <th class="text-center">Cliente ID</th>
+                                <th class="text-center">Fecha de Compra</th>
+                                <th class="text-center">Productos</th>
+                                <th class="text-center">Monto Total</th>
+                                <th class="text-center">Estado</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-order>
+                            <tr>
+                                <td class="text-center">{{ order.orderId }}</td>
+                                <td>{{ order.customerId }}</td>
+                                <td>{{ order.purchaseDate }}</td>
+                                <td>
+                                    <ul>
+                                        <li *ngFor="let product of order.products">
+                                            {{ product.productName }} ({{ product.quantity }}) - ${{ product.totalPrice.toFixed(2) }}
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td class="text-center">${{ order.totalAmount.toFixed(2) }}</td>
+                                <td class="text-center">
+                                    <p-tag [value]="order.orderStatus" [severity]="getSeverity(order.orderStatus)"></p-tag>
+                                </td>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="summary">
+                            <div class="flex align-items-center justify-content-between">
+                                En total hay {{orders ? orders.length : 0 }} órdenes.
+                            </div>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

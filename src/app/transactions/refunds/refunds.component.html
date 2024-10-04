@@ -1,0 +1,43 @@
+<div class="panel-header panel-header-sm"></div>
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Tabla de Reembolsos</h4>
+                </div>
+                <div class="card-body">
+                    <p-table [value]="refunds" [paginator]="true" [rows]="5" [totalRecords]="totalRecords" [lazy]="true" (onLazyLoad)="loadRefunds($event)">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th class="text-center">Reembolso ID</th>
+                                <th class="text-center">Orden ID</th>
+                                <th class="text-center">Cliente ID</th>
+                                <th class="text-center">Fecha de Reembolso</th>
+                                <th class="text-center">Monto</th>
+                                <th class="text-center">Estado</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-refund>
+                            <tr>
+                                <td class="text-center">{{ refund.refundId }}</td>
+                                <td>{{ refund.orderId }}</td>
+                                <td>{{ refund.customerId }}</td>
+                                <td>{{ refund.refundDate }}</td>
+                                <td class="text-center">${{ refund.amount.toFixed(2) }}</td>
+                                <td class="text-center">
+                                    <p-tag [value]="refund.status" [severity]="getSeverity(refund.status)"></p-tag>
+                                </td>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="summary">
+                            <div class="flex align-items-center justify-content-between">
+                                En total hay {{refunds ? refunds.length : 0 }} reembolsos.
+                            </div>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

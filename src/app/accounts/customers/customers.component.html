@@ -1,0 +1,48 @@
+<div class="panel-header panel-header-sm"></div>
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Tabla de Clientes</h4>
+                </div>
+                <div class="card-body">
+                    <p-table [value]="customers" [paginator]="true" [rows]="5" [totalRecords]="totalRecords" [lazy]="true" (onLazyLoad)="loadAccounts($event)">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th class="text-center">Nombre</th>
+                                <th class="text-center">Correo</th>
+                                <th class="text-center">Estado</th>
+                                <th class="text-center">Acciones</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-user>
+                            <tr>
+                                <td>
+                                    <div class="text-center">{{user.customerId}}</div>
+                                </td>
+                                <td>{{user.firstName}} {{user.lastName}}</td>
+                                <td>{{user.email}}</td>
+                                <td class="text-center">
+                                    <p-tag [value]="user.status" [severity]="getSeverity(user.status)"></p-tag>
+                                </td>
+                                <td>
+                                    <div class="d-flex justify-content-center flex-wrap gap-3">
+                                        <p-button icon="pi pi-pencil" severity="warning"></p-button>
+                                        <p-button icon="pi pi-times" severity="danger"></p-button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="summary">
+                            <div class="flex align-items-center justify-content-between">
+                                In total there are {{customers ? customers.length : 0 }} customers.
+                            </div>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

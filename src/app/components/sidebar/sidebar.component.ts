@@ -33,7 +33,7 @@ export const ROUTES: RouteInfo[] = [
     class: '',
     children: [
       { path: '/orders', title: 'Pedidos', icon: 'files_box', class: '' },
-      { path: '/returns', title: 'Reembolsos', icon: 'files_box', class: '' }
+      { path: '/refunds', title: 'Reembolsos', icon: 'files_box', class: '' }
     ],
     expanded: false
   },
@@ -41,14 +41,19 @@ export const ROUTES: RouteInfo[] = [
     path: '/reports',
     title: 'Informes',
     icon: 'education_paper',
-    class: ''
+    class: '',
+    children: [
+      // { path: '/orders', title: 'Reporte de Ventas', icon: 'files_box', class: '' },
+    ],
+    expanded: false
   },
   {
     title: 'Gestión de Cuentas',
     icon: 'users_single-02',
     class: '',
     children: [
-      { path: '/customers', title: 'Usuarios', icon: 'users_single-02', class: '' },
+      { path: '/customers', title: 'Clientes', icon: 'users_single-02', class: '' },
+      { path: '/internal-users', title: 'Cuentas Internas', icon: 'users_single-02', class: '' },
     ],
     expanded: false
   }
