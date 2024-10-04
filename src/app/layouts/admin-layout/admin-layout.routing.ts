@@ -1,7 +1,5 @@
 import { Routes } from '@angular/router';
-
 import { DashboardComponent } from '../../dashboard/dashboard.component';
-
 import { ProductsComponent } from '../../store/products/products.component';
 import { CategoriesComponent } from '../../store/categories/categories.component';
 import { BrandsComponent } from '../../store/brands/brands.component';
@@ -9,20 +7,21 @@ import { InternalUsersComponent } from '../../accounts/internal-users/internal-u
 import { CustomersComponent } from '../../accounts/customers/customers.component';
 import { OrdersComponent } from '../../transactions/orders/orders.component';
 import { RefundsComponent } from '../../transactions/refunds/refunds.component';
+import { AuthGuard } from '../../auth/auth.guard';
 
 export const AdminLayoutRoutes: Routes = [
-    { path: 'dashboard',      component: DashboardComponent },
+    { path: 'dashboard', component: DashboardComponent},
 
     //!Tienda---------------------------------------------------
-    { path: 'products',       component: ProductsComponent },
-    { path: 'categories',     component: CategoriesComponent },
-    { path: 'brands',     component: BrandsComponent },
+    { path: 'products', component: ProductsComponent , canActivate: [AuthGuard] },
+    { path: 'categories', component: CategoriesComponent, canActivate: [AuthGuard] },
+    { path: 'brands', component: BrandsComponent , canActivate: [AuthGuard] },
     //!---------------------------------------------------------
 
     
     //!Pedidos--------------------------------------------------
-    { path: 'orders',       component: OrdersComponent },
-    { path: 'refunds',     component: RefundsComponent },
+    { path: 'orders', component: OrdersComponent , canActivate: [AuthGuard] },
+    { path: 'refunds', component: RefundsComponent , canActivate: [AuthGuard] },
     //!---------------------------------------------------------
 
 
@@ -32,8 +31,8 @@ export const AdminLayoutRoutes: Routes = [
 
     
     //!Clientes-------------------------------------------------
-    { path: 'customers',       component: CustomersComponent },
-    { path: 'internal-users',       component: InternalUsersComponent },
+    { path: 'customers', component: CustomersComponent , canActivate: [AuthGuard] },
+    { path: 'internal-users', component: InternalUsersComponent , canActivate: [AuthGuard] },
     //!---------------------------------------------------------
     // { path: 'user-profile',   component: UserProfileComponent },
     // { path: 'table-list',     component: TableListComponent },
