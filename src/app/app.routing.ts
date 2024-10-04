@@ -4,15 +4,23 @@ import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { LoginComponent } from './auth/login/login.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes =[
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'login', // Asegúrate de que tengas una ruta para login
     pathMatch: 'full',
-  }, {
-    path: '',
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'dashboard',
     component: AdminLayoutComponent,
+    canActivate: [AuthGuard],
     children: [
         {
       path: '',
@@ -20,7 +28,7 @@ const routes: Routes =[
   }]},
   {
     path: '**',
-    redirectTo: 'dashboard'
+    redirectTo: 'login'
   }
 ];
 
@@ -28,9 +36,8 @@ const routes: Routes =[
   imports: [
     CommonModule,
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
   ],
-  exports: [
-  ],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -12,9 +12,11 @@ import { SharedModule } from './layouts/shared/shared.module';
 
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   imports: [
+    AuthModule,
     SharedModule,
     BrowserAnimationsModule,
     FormsModule,
