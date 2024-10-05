@@ -24,6 +24,7 @@ export const ROUTES: RouteInfo[] = [
       { path: '/products', title: 'Productos', icon: 'shopping_basket', class: '' },
       { path: '/categories', title: 'Categorías', icon: 'business_chart-pie-36', class: '' },
       { path: '/brands', title: 'Marcas', icon: 'business_chart-pie-36', class: '' },
+      { path: '/providers', title: 'Proveedores', icon: 'business_chart-pie-36', class: '' }
     ],
     expanded: false
   },
@@ -34,16 +35,6 @@ export const ROUTES: RouteInfo[] = [
     children: [
       { path: '/orders', title: 'Pedidos', icon: 'files_box', class: '' },
       { path: '/refunds', title: 'Reembolsos', icon: 'files_box', class: '' }
-    ],
-    expanded: false
-  },
-  {
-    path: '/reports',
-    title: 'Informes',
-    icon: 'education_paper',
-    class: '',
-    children: [
-      // { path: '/orders', title: 'Reporte de Ventas', icon: 'files_box', class: '' },
     ],
     expanded: false
   },

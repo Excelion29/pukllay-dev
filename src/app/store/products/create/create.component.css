@@ -1,0 +1,20 @@
+.card {
+    margin: 10px; /* Espaciado alrededor de la tarjeta */
+}
+
+.p-timeline {
+    margin-left: 0; /* Alinea la timeline a la izquierda */
+}
+
+.p-timeline .p-timeline-event {
+    display: flex;
+    align-items: center; /* Alinea verticalmente el contenido del evento */
+}
+
+.active {
+    font-weight: bold; /* Resalta la fase activa */
+}
+
+.completed {
+    color: gray; /* Cambia el color para fases completadas */
+}

@@ -1,0 +1,48 @@
+<div class="panel-header panel-header-sm"></div>
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Tabla de Proveedores</h4>
+                </div>
+                <div class="card-body">
+                    <p-table [value]="providers" [paginator]="true" [rows]="5" [totalRecords]="totalRecords" [lazy]="true" (onLazyLoad)="loadProviders($event)">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th class="text-center">Nombre del Proveedor</th>
+                                <th class="text-center">RUC</th>
+                                <th class="text-center">Dirección</th>
+                                <th class="text-center">Teléfono</th>
+                                <th class="text-center">Correo Electrónico</th>
+                                <th class="text-center">Acciones</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-provider>
+                            <tr>
+                                <td class="text-center">{{provider.providerCode}}</td>
+                                <td>{{provider.providerName}}</td>
+                                <td>{{provider.providerRuc}}</td>
+                                <td>{{provider.providerDirection}}</td>
+                                <td>{{provider.providerPhone}}</td>
+                                <td>{{provider.providerEmail}}</td>
+                                <td>
+                                    <div class="d-flex justify-content-center flex-wrap gap-3">
+                                        <p-button icon="pi pi-pencil" severity="warning"/>
+                                        <p-button icon="pi pi-times" severity="danger"/>
+                                    </div>
+                                </td>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="summary">
+                            <div class="flex align-items-center justify-content-between">
+                                En total hay {{providers ? providers.length : 0 }} proveedores.
+                            </div>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
