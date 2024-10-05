@@ -1,0 +1,20 @@
+.gradient-custom {
+  background: #6a11cb;
+  background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+  background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+}
+
+.form-outline.form-white .form-control {
+  line-height: 2rem;
+  color: #fff;
+}
+.form-outline .form-control {
+  min-height: auto;
+  padding-top: .32rem;
+  padding-bottom: .32rem;
+  padding-left: .75rem;
+  padding-right: .75rem;
+  border-radius: .25rem;
+  background: rgba(0, 0, 0, 0);
+  transition: all .2s linear;
+}
