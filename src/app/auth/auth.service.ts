@@ -8,15 +8,15 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  
-  
+
+
   constructor(private http: HttpClient, private router: Router) {}
 
   login(credentials: { email: string; password: string }): Observable<any> {
-    return this.http.get<any>('http://127.0.0.1:5501/app/models/users.json').pipe(
+    return this.http.get<any>('https://apimocha.com/pukllay-user/users').pipe(
       map((response: any) => {
         const user = response.data.find((user: any) => user.email === credentials.email);
-  
+
         if (user && user.password === credentials.password) {
           localStorage.setItem('access_token', user.token); // Guarda el token en localStorage
           localStorage.setItem('user', JSON.stringify(user));
