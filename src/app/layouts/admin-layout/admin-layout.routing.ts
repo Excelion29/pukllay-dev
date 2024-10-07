@@ -1,8 +1,10 @@
 import { Routes } from '@angular/router';
 import { DashboardComponent } from '../../dashboard/dashboard.component';
 import { ProductsComponent } from '../../store/products/products.component';
+import { CreateComponent as ProductCreateComponent } from '../../store/products/create/create.component';
 import { CategoriesComponent } from '../../store/categories/categories.component';
 import { BrandsComponent } from '../../store/brands/brands.component';
+import { ProvidersComponent } from '../../store/providers/providers.component';
 import { InternalUsersComponent } from '../../accounts/internal-users/internal-users.component';
 import { CustomersComponent } from '../../accounts/customers/customers.component';
 import { OrdersComponent } from '../../transactions/orders/orders.component';
@@ -14,8 +16,10 @@ export const AdminLayoutRoutes: Routes = [
 
     //!Tienda---------------------------------------------------
     { path: 'products', component: ProductsComponent , canActivate: [AuthGuard] },
+    { path: 'products/create', component: ProductCreateComponent , canActivate: [AuthGuard] },
     { path: 'categories', component: CategoriesComponent, canActivate: [AuthGuard] },
     { path: 'brands', component: BrandsComponent , canActivate: [AuthGuard] },
+    { path: 'providers', component: ProvidersComponent , canActivate: [AuthGuard] },
     //!---------------------------------------------------------
 
     

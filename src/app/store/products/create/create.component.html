@@ -1,0 +1,155 @@
+<div class="panel-header panel-header-sm"></div>
+<div class="main-content">
+    <div class="row">
+        <!-- Card de la Timeline a la izquierda -->
+        <div class="col-md-12">
+            <div class="card">
+                
+                <div class="card-header">
+                    <p-timeline [value]="events" layout="horizontal" align="bottom">
+                        <ng-template pTemplate="content" let-event>
+                            <div 
+                                [ngClass]="{ 'active': event.status === 'active', 'completed': event.status === 'completed' }" 
+                                (click)="goToPhase(event.index + 1)"
+                                style="cursor: pointer;">
+                                <i [class]="event.icon"></i> {{ event.label }}
+                            </div>
+                        </ng-template>
+                    </p-timeline>
+                </div>
+
+                <div class="card-body">
+                    <form (ngSubmit)="onSubmit()" #productForm="ngForm">
+
+                        <div *ngIf="currentPhase == 1">
+                            <h3>Información Básica</h3>
+                            <div class="p-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <input pInputText [(ngModel)]="product.productTitle" placeholder="Título del Producto" required />
+                                    </div>
+                                    <br>
+                                    <div class="col-md-12">
+                                        <textarea rows="5" cols="30" pInputTextarea [(ngModel)]="value"></textarea>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <!-- Marcas del Producto -->
+                                        <p-multiSelect 
+                                            [options]="brands" 
+                                            [(ngModel)]="selectedBrands" 
+                                            optionLabel="name" 
+                                            placeholder="Seleccionar Marcas" 
+                                            [filter]="true">
+                                        </p-multiSelect>
+                                    </div>
+                                    
+                                    <div class="col-md-4">
+                                        <!-- Categorías del Producto -->
+                                        <p-multiSelect 
+                                            [options]="categories" 
+                                            [(ngModel)]="selectedCategories" 
+                                            optionLabel="name" 
+                                            placeholder="Seleccionar Categorías" 
+                                            [filter]="true">
+                                        </p-multiSelect>
+                                    </div>
+                                    
+                                    <div class="col-md-4">
+                                        <!-- Etiquetas del Producto -->
+                                        <p-multiSelect 
+                                            [options]="tags" 
+                                            [(ngModel)]="selectedTags" 
+                                            optionLabel="name" 
+                                            placeholder="Seleccionar Etiquetas" 
+                                            [filter]="true">
+                                        </p-multiSelect>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div *ngIf="currentPhase == 2">
+                            <h3>Detalles del Producto e Inventario</h3>
+                            <div class="p-fluid">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="description">Descripción</label>
+                                        <textarea rows="5" cols="30" pInputTextarea [(ngModel)]="productDetail.product_description" placeholder="Descripción del Producto" required></textarea>
+                                    </div>
+                        
+                                    <div class="col-md-6">
+                                        <label for="warranty">Garantía</label>
+                                        <input pInputText [(ngModel)]="productDetail.warranty" placeholder="Detalles de la Garantía" />
+                                    </div>
+                                </div>
+                        
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="dimensions">Dimensiones</label>
+                                        <input pInputText [(ngModel)]="productDetail.dimensions" placeholder="Ej. Largo x Ancho x Alto" />
+                                    </div>
+                        
+                                    <div class="col-md-4">
+                                        <label for="material">Material</label>
+                                        <input pInputText [(ngModel)]="productDetail.material" placeholder="Material del Producto" />
+                                    </div>
+                        
+                                    <div class="col-md-4">
+                                        <label for="color">Color</label>
+                                        <input pInputText [(ngModel)]="productDetail.color" placeholder="Color del Producto" />
+                                    </div>
+                                </div>
+                        
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="weight">Peso</label>
+                                        <input pInputText [(ngModel)]="productDetail.weight" placeholder="Peso del Producto" />
+                                    </div>
+                        
+                                    <div class="col-md-4">
+                                        <label for="provider">Proveedor</label>
+                                        <p-treeSelect 
+                                            class="md:w-20rem w-full" 
+                                            containerStyleClass="w-full" 
+                                            [(ngModel)]="selectedProviders" 
+                                            [options]="providers" 
+                                            placeholder="Selecciona un proveedor" />
+                                    </div>
+                        
+                                    <div class="col-md-4">
+                                        <label for="quantity">Cantidad</label>
+                                        <input type="number" pInputText [(ngModel)]="kardex.cantidad" placeholder="Cantidad de Entrada" required />
+                                    </div>
+                                </div>
+                        
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="unitValue">Valor Unitario</label>
+                                        <input pInputText [(ngModel)]="kardex.valor_unitario" placeholder="Valor Unitario" required />
+                                    </div>
+                        
+                                    <div class="col-md-8">
+                                        <label for="storageDescription">Descripción de Almacenamiento</label>
+                                        <input pInputText [(ngModel)]="kardex.descripcion" placeholder="Descripción de Almacenamiento" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div *ngIf="currentPhase == 3">
+                        </div>
+                        
+                        <br>
+                        <p-button label="Anterior" (click)="prevPhase()" [disabled]="currentPhase == 1"/>
+                        <p-button label="Siguiente" (click)="nextPhase()" [disabled]="currentPhase == events.length"/>
+                        <button type="submit" *ngIf="currentPhase === events.length">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

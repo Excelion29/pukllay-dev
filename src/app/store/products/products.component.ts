@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 declare interface ProductInfo {
   productCode?: string;
@@ -112,8 +113,6 @@ export var PRODUCTS: ProductInfo[] = [
   }
 ];
 
-
-
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -122,12 +121,12 @@ export var PRODUCTS: ProductInfo[] = [
   
 export class ProductsComponent implements OnInit {
 
+  constructor(private router: Router) {}
+
   products: ProductInfo[];
   totalRecords: number = 0; // Total de registros
   rows: number = 10; // Número de filas por página
   page: number = 1; // Página actual
-  
-  constructor() { }
 
   ngOnInit() {
     this.products = [...PRODUCTS]; // Asignar todos los productos
@@ -150,5 +149,8 @@ export class ProductsComponent implements OnInit {
         case 'OUTOFSTOCK':
             return 'danger';
     }
+  }
+  create(){
+    this.router.navigate(['/products/create']);
   }
 }

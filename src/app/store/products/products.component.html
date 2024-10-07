@@ -5,6 +5,7 @@
       <div class="card">
         <div class="card-header">
           <h4 class="card-title">Tabla de Productos</h4>
+          <p-button label="Agergar nuevos productos" [rounded]="true"  severity="secondary" (click)="create()"/>
         </div>
         <div class="card-body">
           <p-table [value]="products" [paginator]="true" [rows]="5" [totalRecords]="totalRecords" [lazy]="true" (onLazyLoad)="loadProducts($event)">

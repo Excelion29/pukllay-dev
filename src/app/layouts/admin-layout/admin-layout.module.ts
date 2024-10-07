@@ -16,6 +16,8 @@ import { CustomersComponent } from '../../accounts/customers/customers.component
 import { InternalUsersComponent } from '../../accounts/internal-users/internal-users.component';
 import { OrdersComponent } from '../../transactions/orders/orders.component';
 import { RefundsComponent } from '../../transactions/refunds/refunds.component';
+import { ProvidersComponent } from '../../store/providers/providers.component';
+import { CreateComponent as ProductCreateComponent } from '../../store/products/create/create.component';
 
 @NgModule({
   imports: [
@@ -32,8 +34,10 @@ import { RefundsComponent } from '../../transactions/refunds/refunds.component';
 
     //!Tienda---------------------------
     ProductsComponent,
+    ProductCreateComponent,
     CategoriesComponent,
     BrandsComponent,
+    ProvidersComponent,
     //!---------------------------------
     
     //!Ordenes--------------------------
