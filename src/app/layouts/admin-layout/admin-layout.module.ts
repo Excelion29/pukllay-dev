@@ -9,6 +9,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { SharedModule } from '../shared/shared.module';
 
+
+
 import { ProductsComponent } from '../../store/products/products.component';
 import { CategoriesComponent } from '../../store/categories/categories.component';
 import { BrandsComponent } from '../../store/brands/brands.component';
@@ -39,12 +41,12 @@ import { CreateComponent as ProductCreateComponent } from '../../store/products/
     BrandsComponent,
     ProvidersComponent,
     //!---------------------------------
-    
+
     //!Ordenes--------------------------
     OrdersComponent,
     RefundsComponent,
     //!---------------------------------
-    
+
     //!Cuentas--------------------------
     CustomersComponent,
     InternalUsersComponent

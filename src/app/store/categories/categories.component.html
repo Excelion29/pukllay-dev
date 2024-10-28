@@ -3,31 +3,41 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card">
-          <div class="card-header">
+          <div class="card-header d-flex justify-content-between">
             <h4 class="card-title">Tabla de Categorías</h4>
+            <p-button icon="pi pi-plus" class="p-button-success" severity="success" label="Agregare" (click)="onClickNewCategory()"/>
           </div>
           <div class="card-body">
             <p-table [value]="categories" [paginator]="true" [rows]="5" [totalRecords]="totalRecords" [lazy]="true" (onLazyLoad)="loadCategories($event)">
                 <ng-template pTemplate="header">
                     <tr>
                         <th class="text-center">#</th>
-                        <th class="text-center">Título</th>
-                        <th class="text-center">Descripción</th>
+                        <th class="text-center">Imagen</th>
+                        <th class="text-center">Titulo</th>
                         <th class="text-center">Estado</th>
+                        <th class="text-center">Fecha de creación</th>
+                        <th class="text-center">Fecha de edición</th>
                         <th class="text-center">Acciones</th>
                   </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-category>
                     <tr>
                         <td>
-                          <img [src]="category.categoryIco" [alt]="category.categoryIco" width="100" class="img-thumbnail shadow-sm" />
-                          <div class="text-center">{{category.categoryCode}}</div>
+                          <div>
+                            <p>{{category.categoryId}}</p>
+                          </div>
                         </td>
-                        <td>{{category.categoryTitle}}</td>
-                        <td>{{category.categoryDescription}}</td>
+                        <td>
+                          <!-- <img [src]="category.categoryIco" [alt]="category.categoryIco" width="100" class="img-thumbnail shadow-sm" />
+                          <div class="text-center">{{category.categoryCode}}</div> -->
+                        </td>
+                        <td>{{ category.categoryTitle }}</td>
+                        <!-- <td>{{category.categoryDescription}}</td> -->
                         <td class="text-center" >
-                          <p-tag [value]="getText(category.CategoryStatus)" [severity]="getSeverity(category.CategoryStatus)"></p-tag>
+                          <p-tag [value]="getText(category.isEnabled)" [severity]="getSeverity(category.isEnabled)"></p-tag>
                         </td>
+                        <td>{{ category.createdAt | date: 'short' }}</td>
+                        <td>{{ category.updatedAt | date: 'short' }}</td>
                         <td>
                           <div class="d-flex justify-content-center flex-wrap gap-3">
                               <p-button icon="pi pi-pencil" severity="warning"/>
