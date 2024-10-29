@@ -1,23 +1,27 @@
 <div mat-dialog-title>
-  <h1>Sube un categoria</h1>
+  <p class="text-center">Sube un categoria</p>
 </div>
 <mat-dialog-content>
-<form >
+<form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
   <div mat-dialog-content class="content">
     <div class="row">
       <mat-form-field class="full-width" appearence="outline">
         <mat-label>Nombre de la categoria</mat-label>
-        <input matInput placeholder="Titulo">
+        <input matInput placeholder="Titulo" formControlName="categoryTitle">
       </mat-form-field>
     </div>
 
     <div class="row">
       <mat-form-field class="full-width" appearence="outline">
         <mat-label>Esta habilitado</mat-label>
-        <input matInput placeholder="Titulo">
+        <input matInput placeholder="Titulo" formControlName="isEnabled">
       </mat-form-field>
     </div>
 
+    <div class="action" mat-dialog-actions>
+      <button type="button" mat-raised-button [mat-dialog-close]="false">Cancelar</button>
+      <button mat-button type="submit">Guardar</button>
+    </div>
   </div>
 </form>
 </mat-dialog-content>

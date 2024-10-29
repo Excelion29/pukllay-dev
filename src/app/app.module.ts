@@ -13,6 +13,7 @@ import { SharedModule } from './layouts/shared/shared.module';
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthModule } from './auth/auth.module';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   imports: [
@@ -31,7 +32,9 @@ import { AuthModule } from './auth/auth.module';
     AppComponent,
     AdminLayoutComponent
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
