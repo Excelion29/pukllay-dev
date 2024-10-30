@@ -27,6 +27,8 @@
                 <!-- <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p> -->
 
                 <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5" type="submit" [disabled]="loginForm.invalid">Iniciar Sesión</button>
+                <br>
+                <a href="register" data-mdb-button-init data-mdb-ripple-init type="button"  class="btn btn-dark bg-transparent">Crea una cuenta</a>
 
                 <div *ngIf="errorMessage">
                   <p class="error-message">{{ errorMessage }}</p>

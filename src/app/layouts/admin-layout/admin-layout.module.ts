@@ -7,6 +7,8 @@ import { DashboardComponent } from '../../dashboard/dashboard.component';
 import { BaseChartDirective  } from 'ng2-charts';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
 import { SharedModule } from '../shared/shared.module';
 
 
@@ -27,8 +29,10 @@ import { CreateComponent as ProductCreateComponent } from '../../store/products/
     SharedModule,
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
+    MatCheckboxModule,
     BaseChartDirective,
     NgbModule,
+    MatButtonModule,
     ToastrModule.forRoot()
   ],
   declarations: [

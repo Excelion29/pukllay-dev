@@ -34,7 +34,7 @@ export class ModalCategoriesComponent implements OnInit {
   private _buildForm(): void {
     this.categoryForm = this.fb.group({
       categoryTitle: ['', Validators.required],
-      isEnabled: [true, Validators.required]
+      categoryStatus: [true, Validators.required]
     });
 
     // If editing an existing category, populate the form with the existing data
@@ -54,34 +54,19 @@ export class ModalCategoriesComponent implements OnInit {
     }
 
     let message = 'Categoría actualizada';
-    const category_val = {
-      ...this.categoryForm.value,
-      created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString()
-    };
 
-
-    // if (this._matDialog.data) {
-    //   await this._categoryService.updatedCategroy(category_val);
-    // }else{
-      // let message = 'Categoría creada';
-
-
-      this.categoryService.createCategroy(category_val).subscribe(
-        (response) => {
-          console.log('Categoría creada:', response);
-          this.messageService.add({ severity: 'success', summary: 'Éxito', detail: 'Categoría creada exitosamente' });
-          this.dialogRef.close({ success: true });
-        },
-        (error) => {
-          console.error('Error al crear categoría:', error);
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error al crear categoría' });
-          this.dialogRef.close({ success: false });
-        }
-      );
-
-    // }
-    this.dialogRef.close({ message });
+    this.categoryService.createCategroy(this.categoryForm.value).subscribe(
+      (response) => {
+        console.log('Categoría creada:', response);
+        this.messageService.add({ severity: 'success', summary: 'Éxito', detail: 'Categoría creada exitosamente' });
+        this.dialogRef.close({ success: true });
+      },
+      (error) => {
+        console.error('Error al crear categoría:', error);
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error al crear categoría' });
+        this.dialogRef.close({ success: false });
+      }
+    );
   }
   getTitle(): string {
     return this.data ? 'Editar categoría' : 'Nueva categoría';

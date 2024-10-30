@@ -1,6 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Category } from '../../core/models/Category';
 import { CategoryService } from '../../core/services/category.service';
+
 import { ModalCategoriesComponent } from './modal-categories/modal-categories.component';
 import { ModalCategoriesService } from './modal-categories/modal-categories.service';
 

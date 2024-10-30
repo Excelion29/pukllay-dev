@@ -20,8 +20,6 @@ declare interface ProductInfo {
   providedIn: 'root'
 })
 
-
-
 export class ProductService {
   private apiUrl = 'api/products';
 

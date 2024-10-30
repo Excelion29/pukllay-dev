@@ -11,12 +11,8 @@
       </mat-form-field>
     </div>
 
-    <div class="row">
-      <mat-form-field class="full-width" appearence="outline">
-        <mat-label>Esta habilitado</mat-label>
-        <input matInput placeholder="Titulo" formControlName="isEnabled">
-      </mat-form-field>
-    </div>
+    <input id="isEnabled" type="checkbox" formControlName="categoryStatus">
+    Está habilitado
 
     <div class="action" mat-dialog-actions>
       <button type="button" mat-raised-button [mat-dialog-close]="false">Cancelar</button>

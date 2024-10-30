@@ -24,17 +24,17 @@
                     <tr>
                         <td>
                           <div>
-                            <p>{{category.categoryId}}</p>
+                            <p>{{category.id}}</p>
                           </div>
                         </td>
                         <td>
                           <!-- <img [src]="category.categoryIco" [alt]="category.categoryIco" width="100" class="img-thumbnail shadow-sm" />
                           <div class="text-center">{{category.categoryCode}}</div> -->
                         </td>
-                        <td>{{ category.categoryTitle }}</td>
+                        <td>{{ category.title }}</td>
                         <!-- <td>{{category.categoryDescription}}</td> -->
                         <td class="text-center" >
-                          <p-tag [value]="getText(category.isEnabled)" [severity]="getSeverity(category.isEnabled)"></p-tag>
+                          <p-tag [value]="getText(category.status)" [severity]="getSeverity(category.status)"></p-tag>
                         </td>
                         <td>{{ category.createdAt | date: 'short' }}</td>
                         <td>{{ category.updatedAt | date: 'short' }}</td>

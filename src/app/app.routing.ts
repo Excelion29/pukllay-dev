@@ -7,11 +7,13 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { LoginComponent } from './auth/login/login.component';
 import { AuthGuard } from './auth/auth.guard';
 import { guestGuard } from './auth/guest.guard';
+import { RegisterComponent } from './auth/register/register.component';
+
 
 const routes: Routes =[
   {
     path: '',
-    redirectTo: 'login', 
+    redirectTo: 'login',
     pathMatch: 'full',
   },
   {
@@ -20,8 +22,13 @@ const routes: Routes =[
     canActivate: [guestGuard]
   },
   {
+    path: 'register',
+    component: RegisterComponent,
+    canActivate: [guestGuard]
+  },
+  {
     path: '',
-    component: AdminLayoutComponent, 
+    component: AdminLayoutComponent,
     canActivate: [AuthGuard],
     children: [
       {
