@@ -3,33 +3,37 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { AuthApiResponse, AuthLoginRequest } from '../core/models/Auth';
+import { data } from 'jquery';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+  private apiURL = `${environment.apiUrl}/auth`;
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  login(credentials: { email: string; password: string }): Observable<any> {
-    return this.http.get<any>('https://apimocha.com/pukllay-user/users').pipe(
-      map((response: any) => {
-        const user = response.data.find((user: any) => user.email === credentials.email);
-
-        if (user && user.password === credentials.password) {
-          localStorage.setItem('access_token', user.token); // Guarda el token en localStorage
-          localStorage.setItem('user', JSON.stringify(user));
-          return { success: true, message: 'Inicio de sesión exitoso', user };
-        } else {
+  login(credentials: AuthLoginRequest): Observable<any> {
+    return this.http.post<AuthApiResponse>(`${this.apiURL}/login`,credentials).
+    pipe(
+      map((response: AuthApiResponse) => {
+        console.log(response.success);
+        if (response.success) {
+          localStorage.setItem('access_token', response.data.accessToken); // Guarda el token en localStorage
+          localStorage.setItem('user', JSON.stringify(response.data));
+          this.router.navigate(['dashboard']);
+        }else {
           console.log('Contraseña incorrecta o usuario no encontrado');
-          return { success: false, message: 'Credenciales incorrectas' };
+          //return { success: false, message: 'Credenciales incorrectas' };
         }
       }),
-      catchError(err => {
-        console.error('Error en el inicio de sesión', err);
-        return of({ success: false, message: 'Error en el inicio de sesión' });
-      })
+      // catchError(err => {
+      //   console.error('Error en el inicio de sesión', err);
+      //   return of({ success: false, message: 'Error en el inicio de sesión' });
+      // })
     );
   }
 
@@ -48,4 +52,19 @@ export class AuthService {
     const user = sessionStorage.getItem('user');
     return user ? JSON.parse(user) : null; // Retorna los datos del usuario desde sessionStorage
   }
+
+  // checkExpiration(): void
+  // {
+  //   const user = this.getUser();
+  //   if (user && user.expiresAt)
+  //     {
+  //       const expirationDate = new Date(user.expiresAt);
+  //       const currentDate = new Date();
+  //       if (currentDate > expirationDate)
+  //       { sessionStorage.clear();
+  //         this.logout();
+  //       }
+  //     }
+  // }
+
 }

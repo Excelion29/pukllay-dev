@@ -63,19 +63,21 @@
           }
         },
         "serve": {
-
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "port": 8080,
             "host": "localhost",
+            "proxyConfig": "src/proxy.conf.json",
             "browserTarget": "now-ui-dashboard-angular:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "now-ui-dashboard-angular:build:production"
+              "browserTarget": "now-ui-dashboard-angular:build:production",
+              "proxyConfig": "src/proxy.conf.json"
             },
             "development": {
-              "browserTarget": "now-ui-dashboard-angular:build:development"
+              "browserTarget": "now-ui-dashboard-angular:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             },
             "defaultConfiguration": "development"
           }

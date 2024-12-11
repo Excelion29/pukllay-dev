@@ -20,7 +20,7 @@ export class LoginComponent {
       password: ['', Validators.required]
     });
   }
-  
+
   onSubmit() {
     if (this.loginForm.valid) {
       this.loading = true; // Activa el estado de carga

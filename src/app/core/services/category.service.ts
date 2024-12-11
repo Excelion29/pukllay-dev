@@ -1,6 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Category } from '../models/Category';
+import { Category, CategoryApiResponse, CategoryRequest, CategoryResponse } from '../models/Category';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../src/environments/environment';
 import { map } from 'rxjs/operators'; // Importa map desde rxjs/operators
@@ -14,9 +14,15 @@ export class CategoryService {
 
   constructor(private http:HttpClient) { }
 
-  getCategories(): Observable<Category[]> {
-    return this.http.get<{ data: { categories: Category[] } }>(`${this.apiURL}/all`).pipe(
-      map(response => response.data.categories)
+  getCategories(): Observable<CategoryResponse> {
+    // const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append('page', 0);
+    queryParams = queryParams.append('size', 100);
+
+    return this.http.get<CategoryApiResponse>(`${this.apiURL}/all`,{  params: queryParams  }).pipe(
+      map(response => response.data)
     );
   }
 
@@ -24,16 +30,33 @@ export class CategoryService {
     return this.http.get<Category>(`${this.apiURL}/${id}`);
   }
 
-  createCategroy(category: Category):Observable<Category>{
-    return this.http.post<Category>(`${this.apiURL}/create`, category);
+  createCategory(category: Partial<CategoryRequest>):Observable<Category>{
+    //const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+
+    return this.http.post<{ data: Category }>(`${this.apiURL}/create`, category).pipe(
+      map(response => response.data)
+    );
   }
 
-  updatedCategroy(category: Category){
-    return this.http.put(this.apiURL, category);
+  updatedCategory(category: CategoryRequest): Observable<any>{
+    let queryParams = new HttpParams();
+    // queryParams = queryParams.append('id', category.category_id);
+    //const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+
+    return this.http.put<Category>(`${this.apiURL}/update/`+category.category_id, category,{params: queryParams}).pipe(
+      map(response => response)
+    );
   }
 
-  deletedCategroy(id: number){
-    return this.http.delete(`${this.apiURL}/${id}`)
+  deletedCategory(category_id: number): Observable<CategoryResponse>{
+    let queryParams = new HttpParams();
+    // queryParams = queryParams.append('id', category_id);
+    // const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+
+    return this.http.delete<CategoryResponse>(`${this.apiURL}/delete/`+category_id,{ params: queryParams}).pipe(
+      map(response => response)
+    );
   }
+
 
 }

@@ -2,16 +2,23 @@
   <p class="text-center">{{ titleModal }}</p>
 </div>
 <mat-dialog-content>
-<form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="brandForm" (ngSubmit)="onSubmit()">
   <div mat-dialog-content class="content">
     <div class="row">
       <mat-form-field class="full-width" appearence="outline">
-        <mat-label>Nombre de la categoria</mat-label>
-        <input matInput placeholder="Titulo" formControlName="categoryTitle">
+        <mat-label>Nombre de la marca</mat-label>
+        <input matInput placeholder="Titulo" formControlName="brandName">
       </mat-form-field>
     </div>
 
-    <input type="checkbox" formControlName="categoryStatus">
+    <div class="row">
+      <mat-form-field class="example-full-width">
+        <mat-label>Leave a comment</mat-label>
+        <textarea matInput placeholder="Ex. It makes me feel..." formControlName="brandDescription"></textarea>
+      </mat-form-field>
+    </div>
+
+    <input type="checkbox" formControlName="brandStatus">
     Está habilitado
 
     <div class="action" mat-dialog-actions>

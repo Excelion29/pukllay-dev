@@ -5,7 +5,7 @@
         <div class="card">
           <div class="card-header d-flex justify-content-between">
             <h4 class="card-title">Tabla de Categorías</h4>
-            <p-button icon="pi pi-plus" class="p-button-success" severity="success" label="Agregare" (click)="onClickNewCategory()"/>
+            <p-button icon="pi pi-plus" class="p-button-success" severity="success" label="Agregar" (click)="onClickNewCategory()"/>
           </div>
           <div class="card-body">
             <p-table [value]="categories" [paginator]="true" [rows]="5" [totalRecords]="totalRecords" [lazy]="true" (onLazyLoad)="loadCategories($event)">
@@ -40,8 +40,8 @@
                         <td>{{ category.updatedAt | date: 'short' }}</td>
                         <td>
                           <div class="d-flex justify-content-center flex-wrap gap-3">
-                              <p-button icon="pi pi-pencil" severity="warning"/>
-                              <p-button icon="pi pi-times" severity="danger"/>
+                              <p-button icon="pi pi-pencil" (click)="onClickEditCategory(category)"  severity="warning"/>
+                              <p-button icon="pi pi-times" (click)="onClickDeleteCategory(category.id)" severity="danger"/>
                           </div>
                         </td>
                     </tr>

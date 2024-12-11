@@ -3,8 +3,9 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card">
-          <div class="card-header">
+          <div class="card-header d-flex justify-content-between">
             <h4 class="card-title">Tabla de Marcas</h4>
+            <p-button icon="pi pi-plus" class="p-button-success" severity="success" label="Agregar" (click)="onClickNewBrand()"/>
           </div>
           <div class="card-body">
             <p-table [value]="brands" [paginator]="true" [rows]="5" [totalRecords]="totalRecords" [lazy]="true" (onLazyLoad)="loadBrands($event)">
@@ -14,20 +15,24 @@
                         <th class="text-center">Título</th>
                         <th class="text-center">Descripción</th>
                         <th class="text-center">Estado</th>
+                        <th class="text-center">Fecha de creación</th>
+                        <th class="text-center">Fecha de edición</th>
                         <th class="text-center">Acciones</th>
                   </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-brand>
                     <tr>
                         <td>
-                          <img [src]="brand.brandLogo" [alt]="brand.brandLogo" width="100" class="img-thumbnail shadow-sm" />
-                          <div class="text-center">{{brand.brandCode}}</div>
+
+                          <div class="text-center">{{brand.brand_id}}</div>
                         </td>
-                        <td>{{brand.brandName}}</td>
-                        <td>{{brand.brandDescription}}</td>
+                        <td>{{brand.name}}</td>
+                        <td>{{brand.description}}</td>
                         <td class="text-center" >
-                          <p-tag [value]="getText(brand.brandStatus)" [severity]="getSeverity(brand.brandStatus)"></p-tag>
+                          <p-tag [value]="getText(brand.status)" [severity]="getSeverity(brand.status)"></p-tag>
                         </td>
+                        <td>{{ brand.createdAt | date: 'short' }}</td>
+                        <td>{{ brand.updatedAt | date: 'short' }}</td>
                         <td>
                           <div class="d-flex justify-content-center flex-wrap gap-3">
                               <p-button icon="pi pi-pencil" severity="warning"/>
