@@ -53,6 +53,10 @@ export class AuthService {
     return user ? JSON.parse(user) : null; // Retorna los datos del usuario desde sessionStorage
   }
 
+  getToken(): string | null {
+    return localStorage.getItem('access_token');
+  }
+
   // checkExpiration(): void
   // {
   //   const user = this.getUser();

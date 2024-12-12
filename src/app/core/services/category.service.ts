@@ -1,9 +1,10 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Category, CategoryApiResponse, CategoryRequest, CategoryResponse } from '../models/Category';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../src/environments/environment';
-import { map } from 'rxjs/operators'; // Importa map desde rxjs/operators
+import { catchError, map } from 'rxjs/operators'; // Importa map desde rxjs/operators
+import { AuthService } from '../../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,17 +12,24 @@ import { map } from 'rxjs/operators'; // Importa map desde rxjs/operators
 export class CategoryService {
 
   private apiURL = `${environment.apiUrl}/categories`;
+  private readonly authService = inject(AuthService);
+  private token : string | null;
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) {
+    this.token = this.authService.getToken() || null;
+  }
 
   getCategories(): Observable<CategoryResponse> {
-    // const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+    console.log(this.token);
+
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+
 
     let queryParams = new HttpParams();
     queryParams = queryParams.append('page', 0);
     queryParams = queryParams.append('size', 100);
 
-    return this.http.get<CategoryApiResponse>(`${this.apiURL}/all`,{  params: queryParams  }).pipe(
+    return this.http.get<CategoryApiResponse>(`${this.apiURL}/all`,{ headers  }).pipe(
       map(response => response.data)
     );
   }
@@ -31,9 +39,9 @@ export class CategoryService {
   }
 
   createCategory(category: Partial<CategoryRequest>):Observable<Category>{
-    //const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
 
-    return this.http.post<{ data: Category }>(`${this.apiURL}/create`, category).pipe(
+    return this.http.post<{ data: Category }>(`${this.apiURL}/create`, category,{headers}).pipe(
       map(response => response.data)
     );
   }
