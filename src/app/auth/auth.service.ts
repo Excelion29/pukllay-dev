@@ -4,7 +4,6 @@ import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AuthApiResponse, AuthLoginRequest } from '../core/models/Auth';
-import { data } from 'jquery';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -25,15 +24,8 @@ export class AuthService {
           localStorage.setItem('access_token', response.data.accessToken); // Guarda el token en localStorage
           localStorage.setItem('user', JSON.stringify(response.data));
           this.router.navigate(['dashboard']);
-        }else {
-          console.log('Contraseña incorrecta o usuario no encontrado');
-          //return { success: false, message: 'Credenciales incorrectas' };
         }
       }),
-      // catchError(err => {
-      //   console.error('Error en el inicio de sesión', err);
-      //   return of({ success: false, message: 'Error en el inicio de sesión' });
-      // })
     );
   }
 
@@ -56,19 +48,4 @@ export class AuthService {
   getToken(): string | null {
     return localStorage.getItem('access_token');
   }
-
-  // checkExpiration(): void
-  // {
-  //   const user = this.getUser();
-  //   if (user && user.expiresAt)
-  //     {
-  //       const expirationDate = new Date(user.expiresAt);
-  //       const currentDate = new Date();
-  //       if (currentDate > expirationDate)
-  //       { sessionStorage.clear();
-  //         this.logout();
-  //       }
-  //     }
-  // }
-
 }

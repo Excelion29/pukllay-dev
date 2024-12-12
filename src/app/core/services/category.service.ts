@@ -20,11 +20,7 @@ export class CategoryService {
   }
 
   getCategories(): Observable<CategoryResponse> {
-    console.log(this.token);
-
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
-
-
     let queryParams = new HttpParams();
     queryParams = queryParams.append('page', 0);
     queryParams = queryParams.append('size', 100);
@@ -49,9 +45,9 @@ export class CategoryService {
   updatedCategory(category: CategoryRequest): Observable<any>{
     let queryParams = new HttpParams();
     // queryParams = queryParams.append('id', category.category_id);
-    //const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
 
-    return this.http.put<Category>(`${this.apiURL}/update/`+category.category_id, category,{params: queryParams}).pipe(
+    return this.http.put<Category>(`${this.apiURL}/update/`+category.category_id, category,{headers, params: queryParams}).pipe(
       map(response => response)
     );
   }
@@ -59,9 +55,9 @@ export class CategoryService {
   deletedCategory(category_id: number): Observable<CategoryResponse>{
     let queryParams = new HttpParams();
     // queryParams = queryParams.append('id', category_id);
-    // const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
 
-    return this.http.delete<CategoryResponse>(`${this.apiURL}/delete/`+category_id,{ params: queryParams}).pipe(
+    return this.http.delete<CategoryResponse>(`${this.apiURL}/delete/`+category_id,{ headers, params: queryParams}).pipe(
       map(response => response)
     );
   }
